@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles personnalisés à l'intérieur de la couche components de Tailwind */
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary-dark text-primary font-bold py-2 px-4 rounded transition-colors;
+  }
+  
+  .btn-accent {
+    @apply bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded transition-colors;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .product-card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-lg;
+  }
+  
+  .input-field {
+    @apply w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+}
+
+/* Styles de base */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  @apply bg-gray-50 text-gray-800;
+}
+
+a {
+  @apply text-primary hover:text-primary-dark transition-colors;
+  text-decoration: none;
+}
+
+/* Styles pour les sections communes */
+.section-title {
+  @apply text-3xl font-bold text-center mb-8;
+}
+
+.container-narrow {
+  @apply container mx-auto px-4 max-w-4xl;
+}
+
+/* Styles pour la bannière héro */
+.hero-banner {
+  @apply bg-gradient-to-r from-primary to-primary-dark text-white py-16 rounded-lg overflow-hidden shadow-xl;
+}
+
+/* Animations et transitions */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Styles spécifiques pour les éléments d'e-commerce */
+.price {
+  @apply font-bold text-lg;
+}
+
+.discount-badge {
+  @apply absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded;
+}
+
+.stock-indicator {
+  @apply text-sm;
+}
+
+.stock-indicator.in-stock {
+  @apply text-green-600;
+}
+
+.stock-indicator.low-stock {
+  @apply text-yellow-600;
+}
+
+.stock-indicator.out-of-stock {
+  @apply text-red-600;
+}
+
+/* Styles spécifiques pour le panier */
+.cart-quantity {
+  @apply inline-flex items-center justify-center bg-secondary text-primary text-xs font-bold rounded-full h-5 w-5;
+}
+
+/* Styles pour le footer */
+.footer-link {
+  @apply text-gray-300 hover:text-white transition-colors;
+}
+
+/* Styles pour les tableaux de bord d'analyse */
+.stat-card {
+  @apply bg-white p-4 rounded-lg shadow-md;
+}
+
+.stat-value {
+  @apply text-3xl font-bold;
+}
+
+.stat-label {
+  @apply text-gray-500 text-sm;
+}
+
+/* Préférences de thème sombre/clair */
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  .card, .product-card, .stat-card {
+    @apply bg-gray-800 text-white;
+  }
+  
+  .input-field {
+    @apply bg-gray-700 border-gray-600 text-white;
+  }
+}
