@@ -1,10 +1,8 @@
 // src/services/orderService.ts
 import { v4 as uuidv4 } from 'uuid';
-import { Order, OrderStatus } from '../types/order';
-import { Cart } from '../types';
+import { Order, OrderStatus, OrderCreationParams } from '../types/order';
 
 // Simuler une base de données en utilisant localStorage
-// Dans l'implémentation réelle, ceci appelerait Cassandra
 const getOrdersFromStorage = (): Order[] => {
   const orders = localStorage.getItem('orders');
   return orders ? JSON.parse(orders) : [];
@@ -16,16 +14,16 @@ const saveOrdersToStorage = (orders: Order[]) => {
 
 // Service pour gérer les commandes
 export const orderService = {
-  // Créer une nouvelle commande à partir du panier
-  createOrder: async (cart: Cart, userId: string): Promise<Order> => {
-    if (!cart.items.length) {
+  // Créer une nouvelle commande
+  createOrder: async (orderData: OrderCreationParams, userId: string): Promise<Order> => {
+    if (!orderData.items.length) {
       throw new Error('Le panier est vide');
     }
     
     const newOrder: Order = {
       id: uuidv4(),
       userId,
-      items: cart.items.map(item => ({
+      items: orderData.items.map(item => ({
         productId: item.productId,
         name: item.name,
         price: item.price,
@@ -33,7 +31,8 @@ export const orderService = {
         imageUrl: item.imageUrl
       })),
       status: 'pending',
-      total: cart.total,
+      total: orderData.total,
+      shippingAddress: orderData.address,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };

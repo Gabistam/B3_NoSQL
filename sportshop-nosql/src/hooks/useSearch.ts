@@ -32,7 +32,7 @@ export const useSearch = (initialQuery: string = '') => {
         setLoading(false);
       }
     }, 300),
-    [addNotification]
+    [addNotification, setResults, setLoading]
   );
 
   // Déclencher la recherche quand la requête change

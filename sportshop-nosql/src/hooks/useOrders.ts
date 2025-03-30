@@ -1,10 +1,10 @@
 // src/hooks/useOrders.ts
 import { useState, useEffect, useCallback } from 'react';
 import { orderService } from '../services/orderService';
-import { Cart } from '../types/index'; 
 import { Order, OrderStatus } from '../types/order';
 import { useAuth } from './useAuth';
 import { useNotifications } from '../context/NotificationContext';
+  import { OrderCreationParams } from '../types/order';
 
 export const useOrders = () => {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -36,29 +36,30 @@ export const useOrders = () => {
   }, [user]);
   
   // Créer une nouvelle commande
-  const createOrder = useCallback(async (cart: Cart) => {
-    if (!user) {
-      addNotification('error', 'Vous devez être connecté pour passer une commande');
-      return null;
-    }
-    
-    setLoading(true);
-    try {
-      const newOrder = await orderService.createOrder(cart, user.id);
-      setOrders(prev => [newOrder, ...prev]);
-      setCurrentOrder(newOrder);
-      addNotification('success', 'Commande créée avec succès');
-      setError(null);
-      return newOrder;
-    } catch (err) {
-      console.error('Error creating order:', err);
-      setError('Erreur lors de la création de la commande');
-      addNotification('error', 'Erreur lors de la création de la commande');
-      return null;
-    } finally {
-      setLoading(false);
-    }
-  }, [user, addNotification]);
+
+const createOrder = useCallback(async (orderData: OrderCreationParams) => {
+  if (!user) {
+    addNotification('error', 'Vous devez être connecté pour passer une commande');
+    return null;
+  }
+  
+  setLoading(true);
+  try {
+    const newOrder = await orderService.createOrder(orderData, user.id);
+    setOrders(prev => [newOrder, ...prev]);
+    setCurrentOrder(newOrder);
+    addNotification('success', 'Commande créée avec succès');
+    setError(null);
+    return newOrder;
+  } catch (err) {
+    console.error('Error creating order:', err);
+    setError('Erreur lors de la création de la commande');
+    addNotification('error', 'Erreur lors de la création de la commande');
+    return null;
+  } finally {
+    setLoading(false);
+  }
+}, [user, addNotification]);
   
   // Mettre à jour le statut d'une commande
   const updateOrderStatus = useCallback(async (orderId: string, status: OrderStatus) => {

@@ -5,7 +5,6 @@ import { useCart } from '../context/CartContext';
 import { useOrders } from '../hooks/useOrders';
 import { useAuth } from '../hooks/useAuth';
 import { useNotifications } from '../context/NotificationContext';
-import { Cart } from '../types/index';
 
 const CheckoutPage: React.FC = () => {
   const { cart, clearCart } = useCart();
@@ -54,7 +53,7 @@ const CheckoutPage: React.FC = () => {
     
     try {
       // Créer la commande avec adresse de livraison
-      const orderData: Cart = {
+      const orderData = {
         id: cart.id,
         userId: user?.id || '',
         items: cart.items,
