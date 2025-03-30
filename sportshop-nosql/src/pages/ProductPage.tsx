@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import productsData from '../data/products.json';
 import { Product } from '../types';
+import AddToCartButton from '../components/cart/AddToCartButton';
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,12 +22,6 @@ const ProductPage: React.FC = () => {
       setLoading(false);
     }, 300); // Petit délai pour simuler un chargement
   }, [id]);
-
-  const handleAddToCart = () => {
-    // Fonction pour ajouter au panier
-    alert(`Ajout de ${quantity} ${product?.name} au panier`);
-    // Ici vous implémenteriez la logique d'ajout au panier
-  };
 
   if (loading) {
     return (
@@ -110,12 +105,11 @@ const ProductPage: React.FC = () => {
             </div>
             
             <div className="flex space-x-4">
-              <button 
-                onClick={handleAddToCart}
+              <AddToCartButton 
+                product={product} 
+                quantity={quantity} 
                 className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded transition-colors"
-              >
-                Ajouter au panier
-              </button>
+              />
             </div>
             
             {product.stock < 5 && (
