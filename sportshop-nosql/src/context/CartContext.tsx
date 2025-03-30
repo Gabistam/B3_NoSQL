@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { Cart, Product } from '../types';
+import { Cart, Product } from '../types/index';
+
 
 // Valeur initiale du panier vide
 const initialCart: Cart = {
@@ -7,8 +8,8 @@ const initialCart: Cart = {
   userId: '',
   items: [],
   total: 0,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString()
+  createdAt: new Date(),
+  updatedAt: new Date()
 };
 
 interface CartContextType {
@@ -57,7 +58,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       (sum, item) => sum + item.price * item.quantity, 
       0
     );
-    updatedCart.updatedAt = new Date().toISOString();
+    updatedCart.updatedAt = new Date();
 
     saveCart(updatedCart);
   };
@@ -71,7 +72,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       (sum, item) => sum + item.price * item.quantity, 
       0
     );
-    updatedCart.updatedAt = new Date().toISOString();
+    updatedCart.updatedAt = new Date();
 
     saveCart(updatedCart);
   };
@@ -93,7 +94,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         (sum, item) => sum + item.price * item.quantity, 
         0
       );
-      updatedCart.updatedAt = new Date().toISOString();
+      updatedCart.updatedAt = new Date();
 
       saveCart(updatedCart);
     }
@@ -102,7 +103,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const clearCart = () => {
     saveCart({
       ...initialCart,
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date()
     });
   };
 

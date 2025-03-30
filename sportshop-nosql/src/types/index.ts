@@ -34,11 +34,17 @@ export interface Product {
   
   export interface Cart {
     id: string;
-    userId?: string;
+    userId: string;
     items: CartItem[];
     total: number;
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
+    address?: {
+      street: string;
+      city: string;
+      zip: string;
+      country: string;
+    };
   }
   
   // Types pour les utilisateurs
