@@ -1,26 +1,73 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import productsData from '../data/products.json';
-import { Product } from '../types';
+import { Product, Recommendation } from '../types';
 import AddToCartButton from '../components/cart/AddToCartButton';
+import { useNotifications } from '../context/NotificationContext';
+import SimilarProducts from '../components/recommendations/SimilarProducts';
+
+// Services qui seront remplacés par les connexions NoSQL
+import { productService, recommendationService } from '../services/api';
+
+export interface AddToCartButtonProps {
+  product: Product;
+  quantity: number;
+  className?: string;
+  onAdd?: () => void; // Added onAdd property
+}
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [quantity, setQuantity] = useState<number>(1);
+  const [similarProducts, setSimilarProducts] = useState<Recommendation[]>([]);
+  const [recoLoading, setRecoLoading] = useState<boolean>(true);
+  const { addNotification } = useNotifications();
 
+  // Récupération du produit depuis MongoDB (simulé)
   useEffect(() => {
-    // Simuler une requête API
-    setLoading(true);
-    
-    // Rechercher le produit par ID
-    const foundProduct = productsData.find(p => p.id === id);
-    
-    setTimeout(() => {
-      setProduct(foundProduct || null);
-      setLoading(false);
-    }, 300); // Petit délai pour simuler un chargement
+    const fetchProduct = async () => {
+      setLoading(true);
+      try {
+        const data = await productService.getById(id || '');
+        setProduct(data || null);
+        
+        // Également enregistrer la vue pour les analytics (Cassandra)
+        try {
+          // Dans une implémentation réelle, ceci appellerait un service d'analytics
+          console.log(`Tracking product view for: ${id}`);
+        } catch (error) {
+          console.error('Error tracking product view:', error);
+        }
+      } catch (error) {
+        console.error('Error fetching product:', error);
+        addNotification('error', 'Erreur lors du chargement du produit');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id, addNotification]);
+
+  // Récupération des produits similaires depuis Neo4j (simulé)
+  useEffect(() => {
+    const fetchSimilarProducts = async () => {
+      if (!id) return;
+      
+      setRecoLoading(true);
+      try {
+        // Dans l'implémentation réelle, ceci utilisera Neo4j pour les graphes de relations
+        const recommendations = await recommendationService.getRecommendations(id);
+        setSimilarProducts(recommendations);
+      } catch (error) {
+        console.error('Error fetching recommendations:', error);
+      } finally {
+        setRecoLoading(false);
+      }
+    };
+
+    fetchSimilarProducts();
   }, [id]);
 
   if (loading) {
@@ -109,6 +156,7 @@ const ProductPage: React.FC = () => {
                 product={product} 
                 quantity={quantity} 
                 className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded transition-colors"
+                onAdd={() => addNotification('success', `${product.name} ajouté au panier`)}
               />
             </div>
             
@@ -162,6 +210,14 @@ const ProductPage: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Section des produits similaires (Neo4j) */}
+      {!recoLoading && similarProducts.length > 0 && (
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">Produits similaires</h2>
+          <SimilarProducts recommendations={similarProducts} />
+        </div>
+      )}
     </div>
   );
 };

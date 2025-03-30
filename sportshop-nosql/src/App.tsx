@@ -5,6 +5,8 @@ import Footer from './components/common/Footer';
 import Loading from './components/common/Loading';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext'; 
+import { NotificationProvider } from './context/NotificationContext';
+import NotificationDisplay from './components/common/NotificationDisplay';
 
 // Import lazy des pages
 const HomePage = lazy(() => import('./pages/Homepage'));
@@ -21,27 +23,30 @@ function App() {
   return (
     <AuthProvider>
       <CartProvider> 
-        <Router>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">
-              <Suspense fallback={<Loading />}>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/catalog" element={<CatalogPage />} />
-                  <Route path="/product/:id" element={<ProductPage />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route path="/analytics" element={<AnalyticsPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<RegisterPage />} />
-                </Routes>
-              </Suspense>
-            </main>
-            <Footer />
-          </div>
-        </Router>
+        <NotificationProvider>
+          <Router>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <NotificationDisplay />
+              <main className="flex-grow">
+                <Suspense fallback={<Loading />}>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/catalog" element={<CatalogPage />} />
+                    <Route path="/product/:id" element={<ProductPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/analytics" element={<AnalyticsPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                  </Routes>
+                </Suspense>
+              </main>
+              <Footer />
+            </div>
+          </Router>
+        </NotificationProvider>
       </CartProvider> 
     </AuthProvider>
   );

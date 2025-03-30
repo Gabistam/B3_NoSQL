@@ -1,9 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useNotifications } from '../context/NotificationContext';
+
+// Simuler un service Redis pour les sessions
+const sessionService = {
+  getLastOrder: () => {
+    return JSON.parse(localStorage.getItem('lastOrder') || 'null');
+  },
+  setLastOrder: (order: { items: { productId: string; name: string; price: number; quantity: number; imageUrl?: string }[]; total: number; date: string }) => {
+    localStorage.setItem('lastOrder', JSON.stringify(order));
+  }
+};
 
 const CartPage: React.FC = () => {
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
+  const { addNotification } = useNotifications();
+  const [lastOrder, setLastOrder] = useState<{
+    items: { productId: string; name: string; price: number; quantity: number; imageUrl?: string }[];
+    total: number;
+    date: string;
+  } | null>(null);
+  
+  // Récupérer la dernière commande depuis Redis (simulé)
+  useEffect(() => {
+    const fetchLastOrder = async () => {
+      try {
+        // Dans l'implémentation réelle, ceci appellerait Redis
+        const order = sessionService.getLastOrder();
+        setLastOrder(order);
+      } catch (error) {
+        console.error('Error fetching last order:', error);
+      }
+    };
+    
+    fetchLastOrder();
+  }, []);
+  
+  const handleCheckout = () => {
+    if (cart.items.length === 0) {
+      addNotification('error', 'Votre panier est vide');
+      return;
+    }
+    
+    // Simuler un checkout
+    const orderInfo = {
+      items: cart.items,
+      total: cart.total,
+      date: new Date().toISOString()
+    };
+    
+    // Sauvegarder dans Redis (simulé)
+    sessionService.setLastOrder(orderInfo);
+    setLastOrder(orderInfo);
+    
+    addNotification('success', 'Commande effectuée avec succès!');
+    clearCart();
+  };
   
   if (cart.items.length === 0) {
     return (
@@ -14,6 +67,15 @@ const CartPage: React.FC = () => {
           <Link to="/catalog" className="btn-primary inline-block">
             Continuer vos achats
           </Link>
+          
+          {lastOrder && (
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded">
+              <h3 className="font-semibold text-blue-800">Votre dernière commande</h3>
+              <p className="text-sm text-blue-600 mt-1">
+                Passée le {new Date(lastOrder.date).toLocaleDateString()} pour un montant de {lastOrder.total.toFixed(2)}€
+              </p>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -135,9 +197,19 @@ const CartPage: React.FC = () => {
           
           <button 
             className="w-full mt-6 btn-primary py-3"
+            onClick={handleCheckout}
           >
             Procéder au paiement
           </button>
+          
+          {lastOrder && (
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded">
+              <h3 className="font-semibold text-blue-800">Votre dernière commande</h3>
+              <p className="text-sm text-blue-600 mt-1">
+                Passée le {new Date(lastOrder.date).toLocaleDateString()} pour un montant de {lastOrder.total.toFixed(2)}€
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
