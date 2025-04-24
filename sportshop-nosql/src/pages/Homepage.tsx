@@ -4,6 +4,9 @@ import { FaRunning, FaFootballBall, FaBasketballBall, FaDumbbell } from 'react-i
 import { useAuth } from '../hooks/useAuth';
 import UserRecommendations from '../components/recommendations/UserRecommendations';
 import productsData from '../data/products.json';
+import avatar1 from '../assets/avatar1.jpg';
+import avatar2 from '../assets/avatar2.jpg';
+import avatar3 from '../assets/avatar3.jpg';
 
 const HomePage: React.FC = () => {
   const { isAuthenticated } = useAuth();
@@ -134,9 +137,9 @@ const HomePage: React.FC = () => {
         <h2 className="text-3xl font-bold text-center mb-12">Ce que disent nos clients</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { name: 'Thomas D.', content: 'Excellent service client et livraison rapide. Je recommande vivement cette boutique pour tous vos besoins sportifs.', avatar: '/assets/avatar1.jpg' },
-            { name: 'Sophie L.', content: 'Les produits sont de très haute qualité et durent dans le temps. C\'est ma boutique de référence depuis plus de 2 ans.', avatar: '/assets/avatar2.jpg' },
-            { name: 'Marc B.', content: 'Le rapport qualité-prix est imbattable. J\'ai acheté mes chaussures de running ici et je n\'ai jamais été aussi satisfait.', avatar: '/assets/avatar3.jpg' }
+            { name: 'Thomas D.', content: 'Excellent service client et livraison rapide. Je recommande vivement cette boutique pour tous vos besoins sportifs.', avatar: avatar1 },
+            { name: 'Sophie L.', content: 'Les produits sont de très haute qualité et durent dans le temps. C\'est ma boutique de référence depuis plus de 2 ans.', avatar: avatar2 },
+            { name: 'Marc B.', content: 'Le rapport qualité-prix est imbattable. J\'ai acheté mes chaussures de running ici et je n\'ai jamais été aussi satisfait.', avatar: avatar3 }
           ].map((testimonial, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">

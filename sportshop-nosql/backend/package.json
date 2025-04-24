@@ -1,14 +1,16 @@
 {
-  "name": "backend",
+  "name": "sportshop-nosql-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Backend Express pour l'application SportShop NoSQL",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

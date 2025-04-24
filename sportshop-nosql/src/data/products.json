@@ -1,89 +1,313 @@
 [
     {
-      "id": "1",
-      "name": "Ballon de football professionnel",
-      "description": "Ballon de football officiel conçu pour les matchs professionnels. Excellente durabilité et précision de vol.",
-      "price": 29.99,
-      "category": "Équipement",
-      "sport": "Football",
-      "imageUrl": "/assets/football.jpg",
-      "stock": 45,
-      "rating": 4.7,
-      "reviews": [
-        {
-          "id": "r1",
-          "userId": "u1",
-          "userName": "Thomas D.",
-          "rating": 5,
-          "comment": "Excellent ballon, très bonne qualité.",
-          "date": "2025-02-15T10:30:00Z"
-        },
-        {
-          "id": "r2",
-          "userId": "u2",
-          "userName": "Sophie L.",
-          "rating": 4,
-          "comment": "Bonne tenue dans le temps, je recommande.",
-          "date": "2025-01-27T14:15:00Z"
-        }
-      ],
-      "relatedProducts": ["5", "7", "12"]
+        "id": "1",
+        "name": "Ballon de football professionnel",
+        "description": "Ballon de football officiel conçu pour les matchs professionnels. Excellente durabilité et précision de vol.",
+        "price": 29.99,
+        "category": "Équipement",
+        "sport": "Football",
+        "imageUrl": "/assets/football.jpg",
+        "stock": 45,
+        "rating": 4.7,
+        "reviews": [
+            {
+                "id": "r1",
+                "userId": "u1",
+                "userName": "Thomas D.",
+                "rating": 5,
+                "comment": "Excellent ballon, très bonne qualité.",
+                "date": "2025-02-15T10:30:00Z"
+            },
+            {
+                "id": "r2",
+                "userId": "u2",
+                "userName": "Sophie L.",
+                "rating": 4,
+                "comment": "Bonne tenue dans le temps, je recommande.",
+                "date": "2025-01-27T14:15:00Z"
+            }
+        ],
+        "relatedProducts": [
+            "5",
+            "7",
+            "12"
+        ]
     },
     {
-      "id": "2",
-      "name": "Chaussures de running performance",
-      "description": "Chaussures de course légères avec amorti optimal pour vos entraînements de longue distance.",
-      "price": 89.99,
-      "category": "Chaussures",
-      "sport": "Running",
-      "imageUrl": "/assets/running-shoes.jpg",
-      "stock": 32,
-      "rating": 4.5,
-      "reviews": [
-        {
-          "id": "r3",
-          "userId": "u3",
-          "userName": "Marc B.",
-          "rating": 5,
-          "comment": "Très confortables, même après 10km.",
-          "date": "2025-03-01T09:45:00Z"
-        }
-      ],
-      "relatedProducts": ["8", "15", "17"]
+        "id": "2",
+        "name": "Chaussures de running performance",
+        "description": "Chaussures de course légères avec amorti optimal pour vos entraînements de longue distance.",
+        "price": 89.99,
+        "category": "Chaussures",
+        "sport": "Running",
+        "imageUrl": "/assets/running-shoes.jpg",
+        "stock": 32,
+        "rating": 4.5,
+        "reviews": [
+            {
+                "id": "r3",
+                "userId": "u3",
+                "userName": "Marc B.",
+                "rating": 5,
+                "comment": "Très confortables, même après 10km.",
+                "date": "2025-03-01T09:45:00Z"
+            }
+        ],
+        "relatedProducts": [
+            "8",
+            "15",
+            "17"
+        ]
     },
     {
-      "id": "3",
-      "name": "Tapis de yoga antidérapant",
-      "description": "Tapis écologique avec surface antidérapante pour une pratique du yoga en toute sécurité.",
-      "price": 19.99,
-      "category": "Accessoires",
-      "sport": "Fitness",
-      "imageUrl": "/assets/yoga-mat.jpg",
-      "stock": 67,
-      "rating": 4.8,
-      "reviews": [
-        {
-          "id": "r4",
-          "userId": "u4",
-          "userName": "Julie M.",
-          "rating": 5,
-          "comment": "Excellent grip, je ne glisse plus pendant mes postures.",
-          "date": "2025-02-20T16:20:00Z"
-        }
-      ],
-      "relatedProducts": ["6", "14", "19"]
+        "id": "3",
+        "name": "Tapis de yoga antidérapant",
+        "description": "Tapis écologique avec surface antidérapante pour une pratique du yoga en toute sécurité.",
+        "price": 19.99,
+        "category": "Accessoires",
+        "sport": "Fitness",
+        "imageUrl": "/assets/yoga-mat.jpg",
+        "stock": 67,
+        "rating": 4.8,
+        "reviews": [
+            {
+                "id": "r4",
+                "userId": "u4",
+                "userName": "Julie M.",
+                "rating": 5,
+                "comment": "Excellent grip, je ne glisse plus pendant mes postures.",
+                "date": "2025-02-20T16:20:00Z"
+            }
+        ],
+        "relatedProducts": [
+            "6",
+            "14",
+            "19"
+        ]
     },
     {
-      "id": "4",
-      "name": "Maillot de basketball respirant",
-      "description": "Maillot technique conçu pour évacuer la transpiration et offrir une liberté de mouvement maximale.",
-      "price": 34.99,
-      "category": "Vêtements",
-      "sport": "Basketball",
-      "imageUrl": "/assets/basketball-jersey.jpg",
-      "stock": 28,
-      "rating": 4.3,
-      "reviews": [],
-      "relatedProducts": ["9", "13", "18"]
+        "id": "4",
+        "name": "Maillot de basketball respirant",
+        "description": "Maillot technique conçu pour évacuer la transpiration et offrir une liberté de mouvement maximale.",
+        "price": 34.99,
+        "category": "Vêtements",
+        "sport": "Basketball",
+        "imageUrl": "/assets/basketball-jersey.jpg",
+        "stock": 28,
+        "rating": 4.3,
+        "reviews": [],
+        "relatedProducts": [
+            "9",
+            "13",
+            "18"
+        ]
+    },
+    {
+        "id": "5",
+        "name": "Chaussures Randonnée modèle 5",
+        "description": "Chaussures Randonnée modèle 5 de haute qualité pour vos activités de randonnée.",
+        "price": 118.14,
+        "category": "Chaussures",
+        "sport": "Randonnée",
+        "imageUrl": "https://source.unsplash.com/800x600/?randonnée",
+        "stock": 33,
+        "rating": 4.9,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "6",
+        "name": "Accessoires Fitness modèle 6",
+        "description": "Accessoires Fitness modèle 6 de haute qualité pour vos activités de fitness.",
+        "price": 27.48,
+        "category": "Accessoires",
+        "sport": "Fitness",
+        "imageUrl": "https://source.unsplash.com/800x600/?fitness",
+        "stock": 39,
+        "rating": 4.9,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "7",
+        "name": "Vêtements Running modèle 7",
+        "description": "Vêtements Running modèle 7 de haute qualité pour vos activités de running.",
+        "price": 69.58,
+        "category": "Vêtements",
+        "sport": "Running",
+        "imageUrl": "https://source.unsplash.com/800x600/?running",
+        "stock": 55,
+        "rating": 4.3,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "8",
+        "name": "Accessoires Fitness modèle 8",
+        "description": "Accessoires Fitness modèle 8 de haute qualité pour vos activités de fitness.",
+        "price": 119.64,
+        "category": "Accessoires",
+        "sport": "Fitness",
+        "imageUrl": "https://source.unsplash.com/800x600/?fitness",
+        "stock": 91,
+        "rating": 4.8,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "9",
+        "name": "Chaussures Basketball modèle 9",
+        "description": "Chaussures Basketball modèle 9 de haute qualité pour vos activités de basketball.",
+        "price": 41.09,
+        "category": "Chaussures",
+        "sport": "Basketball",
+        "imageUrl": "https://source.unsplash.com/800x600/?basketball",
+        "stock": 42,
+        "rating": 4.5,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "10",
+        "name": "Accessoires Cyclisme modèle 10",
+        "description": "Accessoires Cyclisme modèle 10 de haute qualité pour vos activités de cyclisme.",
+        "price": 88.65,
+        "category": "Accessoires",
+        "sport": "Cyclisme",
+        "imageUrl": "https://source.unsplash.com/800x600/?cyclisme",
+        "stock": 87,
+        "rating": 3.5,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "11",
+        "name": "Équipement Basketball modèle 11",
+        "description": "Équipement Basketball modèle 11 de haute qualité pour vos activités de basketball.",
+        "price": 56.29,
+        "category": "Équipement",
+        "sport": "Basketball",
+        "imageUrl": "https://source.unsplash.com/800x600/?basketball",
+        "stock": 65,
+        "rating": 4.5,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "12",
+        "name": "Équipement Cyclisme modèle 12",
+        "description": "Équipement Cyclisme modèle 12 de haute qualité pour vos activités de cyclisme.",
+        "price": 97.63,
+        "category": "Équipement",
+        "sport": "Cyclisme",
+        "imageUrl": "https://source.unsplash.com/800x600/?cyclisme",
+        "stock": 20,
+        "rating": 4.3,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "13",
+        "name": "Chaussures Basketball modèle 13",
+        "description": "Chaussures Basketball modèle 13 de haute qualité pour vos activités de basketball.",
+        "price": 28.55,
+        "category": "Chaussures",
+        "sport": "Basketball",
+        "imageUrl": "https://source.unsplash.com/800x600/?basketball",
+        "stock": 87,
+        "rating": 4.5,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "14",
+        "name": "Accessoires Natation modèle 14",
+        "description": "Accessoires Natation modèle 14 de haute qualité pour vos activités de natation.",
+        "price": 119.47,
+        "category": "Accessoires",
+        "sport": "Natation",
+        "imageUrl": "https://source.unsplash.com/800x600/?natation",
+        "stock": 16,
+        "rating": 4.7,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "15",
+        "name": "Accessoires Cyclisme modèle 15",
+        "description": "Accessoires Cyclisme modèle 15 de haute qualité pour vos activités de cyclisme.",
+        "price": 19.36,
+        "category": "Accessoires",
+        "sport": "Cyclisme",
+        "imageUrl": "https://source.unsplash.com/800x600/?cyclisme",
+        "stock": 10,
+        "rating": 4.2,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "16",
+        "name": "Chaussures Football modèle 16",
+        "description": "Chaussures Football modèle 16 de haute qualité pour vos activités de football.",
+        "price": 127.2,
+        "category": "Chaussures",
+        "sport": "Football",
+        "imageUrl": "https://source.unsplash.com/800x600/?football",
+        "stock": 85,
+        "rating": 4.8,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "17",
+        "name": "Vêtements Running modèle 17",
+        "description": "Vêtements Running modèle 17 de haute qualité pour vos activités de running.",
+        "price": 123.4,
+        "category": "Vêtements",
+        "sport": "Running",
+        "imageUrl": "https://source.unsplash.com/800x600/?running",
+        "stock": 50,
+        "rating": 4.8,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "18",
+        "name": "Chaussures Running modèle 18",
+        "description": "Chaussures Running modèle 18 de haute qualité pour vos activités de running.",
+        "price": 37.51,
+        "category": "Chaussures",
+        "sport": "Running",
+        "imageUrl": "https://source.unsplash.com/800x600/?running",
+        "stock": 68,
+        "rating": 5.0,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "19",
+        "name": "Chaussures Basketball modèle 19",
+        "description": "Chaussures Basketball modèle 19 de haute qualité pour vos activités de basketball.",
+        "price": 118.9,
+        "category": "Chaussures",
+        "sport": "Basketball",
+        "imageUrl": "https://source.unsplash.com/800x600/?basketball",
+        "stock": 48,
+        "rating": 3.7,
+        "reviews": [],
+        "relatedProducts": []
+    },
+    {
+        "id": "20",
+        "name": "Vêtements Football modèle 20",
+        "description": "Vêtements Football modèle 20 de haute qualité pour vos activités de football.",
+        "price": 107.85,
+        "category": "Vêtements",
+        "sport": "Football",
+        "imageUrl": "https://source.unsplash.com/800x600/?football",
+        "stock": 67,
+        "rating": 4.1,
+        "reviews": [],
+        "relatedProducts": []
     }
-  ]
+]
