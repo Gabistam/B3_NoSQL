@@ -96,7 +96,7 @@ const ProductPage: React.FC = () => {
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <div className="md:flex">
           {/* Image du produit */}
-          <div className="md:w-1/2 h-80 bg-gray-200 flex items-center justify-center">
+          <div className="md:w-1/2 h-80 bg-white -200 flex items-center justify-center">
             {product.imageUrl ? (
               <img
                 src={product.imageUrl}

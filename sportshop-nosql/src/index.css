@@ -108,6 +108,12 @@ a {
   @apply text-gray-300 hover:text-white transition-colors;
 }
 
+.bg-white-contact {
+
+  background-image: url('https://images.unsplash.com/photo-1629213776339-53609f483639?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c3BvcnR8ZW58MHwyfDB8fHwy') ;
+  background-size: cover;
+}
+
 .stat-card {
   @apply bg-white p-4 rounded-lg shadow-md;
 }

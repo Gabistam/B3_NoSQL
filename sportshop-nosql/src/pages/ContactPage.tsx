@@ -40,7 +40,7 @@ const ContactPage: React.FC = () => {
       <h1 className="text-3xl font-bold mb-6">Contactez-nous</h1>
       
       <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white bg-white-contact rounded-lg shadow p-6">
           <h2 className="text-2xl font-semibold mb-4">Nos coordonnées</h2>
           
           <div className="space-y-4">
