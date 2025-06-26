@@ -1,0 +1,77 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # # MongoDB (Document)
+  # mongodb:
+  #   image: mongo:latest
+  #   container_name: sportshop-mongodb
+  #   restart: always
+  #   ports:
+  #     - "27017:27017"
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: admin
+  #     MONGO_INITDB_ROOT_PASSWORD: password123
+  #     MONGO_INITDB_DATABASE: sportshop
+  #   volumes:
+  #     - mongodb_data:/data/db
+  #     - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  #   networks:
+  #     - sportshop-network
+
+  # Redis (Clé-Valeur)
+  redis:
+    image: redis:latest
+    container_name: sportshop-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+      - ./docker/redis.conf:/etc/redis/redis.conf
+    networks:
+      - sportshop-network
+
+  # Cassandra (Colonne)
+  cassandra:
+    image: cassandra:latest
+    container_name: sportshop-cassandra
+    restart: always
+    ports:
+      - "9042:9042"
+    environment:
+      CASSANDRA_CLUSTER_NAME: SportShopCluster
+      CASSANDRA_DC: dc1
+      CASSANDRA_RACK: rack1
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+      - ./docker/cassandra-init.cql:/docker-entrypoint-initdb.d/cassandra-init.cql:ro
+    networks:
+      - sportshop-network
+
+  # Neo4j (Graphe)
+  neo4j:
+    image: neo4j:latest
+    container_name: sportshop-neo4j
+    restart: always
+    ports:
+      - "7474:7474"  # Interface web
+      - "7687:7687"  # Bolt
+    environment:
+      NEO4J_AUTH: neo4j/password123
+      NEO4J_dbms_default__database: sportshop
+    volumes:
+      - neo4j_data:/data
+      - ./docker/neo4j-init.cypher:/docker-entrypoint-initdb.d/neo4j-init.cypher:ro
+    networks:
+      - sportshop-network
+
+volumes:
+  mongodb_data:
+  redis_data:
+  cassandra_data:
+  neo4j_data:
+
+networks:
+  sportshop-network:
+    driver: bridge
