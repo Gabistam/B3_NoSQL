@@ -1,8 +1,12 @@
 const express = require('express');
 const { port } = require('./config/env');
+const mongoService = require('./services/mongodb');
 
 // Création de l'application Express
 const app = express();
+
+// Connexion à MongoDB
+mongoService.connect();
 
 // Application des configurations
 require('./config/express')(app);
